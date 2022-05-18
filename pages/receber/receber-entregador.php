@@ -75,6 +75,6 @@ if (isset($_POST['qtd'])) {
 
     $item->cadastar();
 
-    header('location: receber-list.php?status=success');
+    header('location: receber-list.php?');
     exit;
 }

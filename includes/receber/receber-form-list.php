@@ -5,11 +5,6 @@ $list = '';
 if (isset($_GET['status'])) {
 
    switch ($_GET['status']) {
-      case 'success':
-         $icon  = 'success';
-         $title = 'Parabéns';
-         $text = 'Cadastro realizado com Sucesso !!!';
-         break;
 
       case 'del':
          $icon  = 'error';
@@ -153,7 +148,7 @@ foreach ($listar as $item) {
 
    $resultados .= '<tr>
 
-                      <td style="text-transform:uppercase">' . $contador . '</td>
+                      <td style="text-transform:uppercase">' . $item->id . '</td>
                       <td style="text-transform:uppercase">' . date('d/m/Y  Á\S  H:i:s', strtotime($item->data)) . '</td>
                       <td style="text-transform:uppercase">' . $item->cliente . '</td>
                       <td style="text-transform:uppercase">' . $item->setores . '</td>
