@@ -51,7 +51,7 @@ if(isset($_POST['rotas'])){
         $item->cadastar();
    }
 
-   header('location: receber-list.php?status=success');
+   header('location: receber-list.php?');
    exit;
 
 }

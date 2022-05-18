@@ -30,9 +30,12 @@ if (isset($_GET['acao'])) {
 
                 $val1 = $item->qtd;
 
-                $item->qtd = $valor;
-                $item->disponivel  = $valor;
+                if($item->disponivel != 0){
 
+                    $item->qtd = $valor;
+                    $item->disponivel  = $valor;
+
+                }
                 $item->atualizar();
             }
         }
