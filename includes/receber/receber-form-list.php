@@ -165,7 +165,9 @@ foreach ($listar as $item) {
                       <td style="text-align: center;width:300px">
                         
                       
-                      <a class="btn btn-default editbtn2" ' . $disabled . ' > <i class="fas fa-fa fa-motorcycle"></i> ENTREGADORES </a>
+                      <a class="editbtn2"  >  
+                      <button ' . $disabled . ' type="button" class="btn btn-default"><i class="fas fa-fa fa-motorcycle"></i> &nbsp; &nbsp; ENTREGADORES  </button>
+                      </a>
                        &nbsp;
                        &nbsp;
 

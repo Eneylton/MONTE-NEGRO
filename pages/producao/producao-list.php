@@ -35,7 +35,7 @@ $where = implode(' AND ', $condicoes);
 
 $qtd = Producao:: getQtd($where);
 
-$pagination = new Pagination($qtd, $_GET['pagina'] ?? 1, 200);
+$pagination = new Pagination($qtd, $_GET['pagina'] ?? 1, 2000);
 
 $listar = Producao::getList('
 p.id AS id,
