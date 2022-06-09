@@ -348,7 +348,10 @@
     myDropzone.removeAllFiles(true)
   }
   // DropzoneJS Demo Code End
+
 </script>
+
+
 
 </body>
 

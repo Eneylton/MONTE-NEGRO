@@ -61,13 +61,15 @@ class Database
         }
     }
 
-    
+
     public function select($fields = null, $table = null, $where = null, $order = null, $limit = null)
     {
 
         $where = strlen($where) ? 'WHERE ' . $where : '';
         $order = strlen($order) ? 'ORDER BY ' . $order : '';
         $limit = strlen($limit) ? 'LIMIT ' . $limit : '';
+
+        
 
         $query = 'SELECT ' . $fields . ' FROM ' . $table . ' ' . $where . ' ' . $order . ' ' . $limit;
 

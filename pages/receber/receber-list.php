@@ -320,3 +320,18 @@ include __DIR__ . '../../../includes/layout/footer.php';
 
     });
 </script>
+
+
+<script>
+
+async function Entregar(id){
+    const dadosResp = await fetch('receber-entreg-modal.php?id=' + id);
+    const result = await dadosResp.json();
+  
+    const entregModal = new bootstrap.Modal(document.getElementById("entregModal"));
+    entregModal.show();
+    document.querySelector(".end-modal").innerHTML = result['dados'];
+ 
+}
+
+</script>

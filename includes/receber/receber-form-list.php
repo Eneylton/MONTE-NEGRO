@@ -165,9 +165,9 @@ foreach ($listar as $item) {
                       <td style="text-align: center;width:300px">
                         
                       
-                      <a class="editbtn2"  >  
-                      <button ' . $disabled . ' type="button" class="btn btn-default"><i class="fas fa-fa fa-motorcycle"></i> &nbsp; &nbsp; ENTREGADORES  </button>
-                      </a>
+                     
+                      <button ' . $disabled . ' type="button" class="btn btn-default" onclick="Entregar(' . $item->id . ')" ><i class="fas fa-fa fa-motorcycle"></i> &nbsp; &nbsp; ENTREGADORES  </button>
+                    
                        &nbsp;
                        &nbsp;
 
@@ -198,36 +198,36 @@ $resultados = strlen($resultados) ? $resultados : '<tr>
                <!-- /.card-header -->
 
                <form action="?acao=up" method="post">
-               <div class="card-body">
-               
-                  <table id="example" class="table table-dark table-hover table-bordered table-striped">
-                     <thead>
-                        <tr>
-                           <th style="text-align: left; width:80px"> Nº </th>
-                           <th> DATA</th>
-                           <th> CLIENTE </th>
-                           <th> SETOR </th>
-                           <th> SERVIÇOS </th>
-                           <th> BAIAS </th>
-                           <th class="centro"> QTD </th>
-                           <th> DISPONÍVEL </th>
+                  <div class="card-body">
 
-                           <th style="text-align: center; width:200px"> AÇÃO </th>
-                        </tr>
-                     </thead>
-                   
-                     <tbody>
-                        <?= $resultados ?>
-                     </tbody>
-                 
+                     <table id="example" class="table table-dark table-hover table-bordered table-striped">
+                        <thead>
+                           <tr>
+                              <th style="text-align: left; width:80px"> Nº </th>
+                              <th> DATA</th>
+                              <th> CLIENTE </th>
+                              <th> SETOR </th>
+                              <th> SERVIÇOS </th>
+                              <th> BAIAS </th>
+                              <th class="centro"> QTD </th>
+                              <th> DISPONÍVEL </th>
 
-                  </table>
+                              <th style="text-align: center; width:200px"> AÇÃO </th>
+                           </tr>
+                        </thead>
 
-               
-               </div>
+                        <tbody>
+                           <?= $resultados ?>
+                        </tbody>
+
+
+                     </table>
+
+
+                  </div>
 
                </form>
-             
+
 
             </div>
 
@@ -323,7 +323,7 @@ $resultados = strlen($resultados) ? $resultados : '<tr>
                      <div class="form-group">
                         <label>Rotas</label>
                         <select id="test" class="form-control select" style="width: 100%;" name="rotas[]" required>
-                          
+
                            <?php
 
                            foreach ($baias as $item) {
@@ -477,87 +477,6 @@ $resultados = strlen($resultados) ? $resultados : '<tr>
    <!-- /.modal-dialog -->
 </div>
 
-<div class="modal fade" id="editmodal2" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-   <div class="modal-dialog modal-lg">
-      <form name="form-05" id="form-05" action="receber-entregador.php" method="post">
-         <div class="modal-content bg-light">
-            <div class="modal-header">
-               <h4 class="modal-title">Prazo de entrega</h4>
-
-               <input type="hidden" name="receber_id" id="id2">
-
-               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-               </button>
-            </div>
-            <div class="modal-body">
-               <div class="row">
-
-                  <div class="col-6">
-
-                     <div class="form-group">
-                        <label>Início da entrega</label>
-                        <input value="<?php
-                                       date_default_timezone_set('America/Sao_Paulo');
-                                       echo date('Y-m-d\TH:i:s', time()); ?>" type="datetime-local" class="form-control" name="data_inicio" required>
-                     </div>
-                  </div>
-                  <div class="col-6">
-
-                     <div class="form-group">
-                        <label>Final da entrega</label>
-                        <input value="<?php
-                                       date_default_timezone_set('America/Sao_Paulo');
-                                       echo date('Y-m-d\TH:i:s', time()); ?>" type="datetime-local" class="form-control" name="data_inicio" required>
-                     </div>
-                  </div>
-
-                  <div class="col-4">
-                     <label>Regiões</label>
-                     <select class="form-control select" style="width: 100%;" name="regioes" id="regioes" required>
-                        <option value=""> Selecione uma região </option>
-                        <?php
-
-                        foreach ($regioes as $item) {
-                           echo '<option style="text-transform: uppercase;" value="' . $item->id . '">' . $item->nome . '</option>';
-                        }
-                        ?>
-
-                     </select>
-
-                  </div>
-                  <div class="col-4">
-                     <label>Entregador</label>
-                     <select class="form-control" name="entregadores" id="entregadores"></select>
-
-                  </div>
-
-                  <div class="col-4">
-
-                     <div class="form-group">
-                        <label>Quandidade para entrega</label>
-                        <input style="width: 100px;" type="text" class="form-control" name="qtd" id="quantidade" required>
-                     </div>
-
-                  </div>
-
-               </div>
-            </div>
-
-
-            <div class="modal-footer justify-content-between">
-               <button type="button" class="btn btn-danger" data-dismiss="modal">Fechar</button>
-               <button type="submit" class="btn btn-primary">Entregar
-               </button>
-            </div>
-         </div>
-      </form>
-      <!-- /.modal-content -->
-   </div>
-   <!-- /.modal-dialog -->
-</div>
-
-
 
 <div class="modal fade" id="modal-data">
    <div class="modal-dialog modal-lg">
@@ -677,3 +596,79 @@ $resultados = strlen($resultados) ? $resultados : '<tr>
    </div>
    <!-- /.modal-dialog -->
 </div>
+
+<form action="./receber-entregador.php" method="POST">
+   <div class="modal fade" id="entregModal" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+
+         <div class="modal-content bg-light">
+            <div class="modal-header">
+               <h4 class="modal-title">Prazo de Entrega
+               </h4>
+               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+               </button>
+            </div>
+            <div class="modal-body">
+
+
+               <div class="row">
+                  <div class="col-6">
+
+                     <div class="form-group">
+                        <label>Início da entrega</label>
+                        <input value="<?php
+                                       date_default_timezone_set('America/Sao_Paulo');
+                                       echo date('Y-m-d\TH:i:s', time()); ?>" type="datetime-local" class="form-control" name="data_inicio" required>
+                     </div>
+                  </div>
+
+                  <div class="col-6">
+
+                     <div class="form-group">
+                        <label>Final da entrega</label>
+                        <input value="<?php
+                                       date_default_timezone_set('America/Sao_Paulo');
+                                       echo date('Y-m-d\TH:i:s', time()); ?>" type="datetime-local" class="form-control" name="data_fim" required>
+                     </div>
+                  </div>
+
+                  <div class="col-4">
+                     <label>Regiões</label>
+                     <select class="form-control select" style="width: 100%;" name="regioes" id="regioes" required>
+                        <option value=""> Selecione uma região </option>
+                        <?php
+
+                        foreach ($regioes as $item) {
+                           echo '<option style="text-transform: uppercase;" value="' . $item->id . '">' . $item->nome . '</option>';
+                        }
+                        ?>
+
+                     </select>
+
+                  </div>
+                  <div class="col-4">
+                     <label>Entregador</label>
+                     <select class="form-control" name="entregadores" id="entregadores"></select>
+
+                  </div>
+                  <div class="col-4">
+                  <span class="end-modal"></span>
+                  </div>
+
+
+               </div>
+
+            </div>
+            <div class="modal-footer justify-content-between">
+               <button type="button" class="btn btn-danger" data-dismiss="modal">Fechar</button>
+               <button type="submit" class="btn btn-primary">Salvar
+               </button>
+            </div>
+         </div>
+
+         <!-- /.modal-content -->
+      </div>
+      <!-- /.modal-dialog -->
+   </div>
+</form>
