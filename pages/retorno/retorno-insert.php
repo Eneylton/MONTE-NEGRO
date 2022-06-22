@@ -1,6 +1,6 @@
-<?php 
+<?php
 
-require __DIR__.'../../../vendor/autoload.php';
+require __DIR__ . '../../../vendor/autoload.php';
 
 use App\Entidy\Entrega;
 use App\Entidy\Retorno;
@@ -14,7 +14,7 @@ $producao_id = 0;
 $entregador_id = 0;
 $qtd_producao = 0;
 
-if(isset($_GET['id'])){
+if (isset($_GET['id'])) {
 
     $producao_id    = $_GET['producao_id'];
     $entregador_id  = $_GET['entregadores_id'];
@@ -22,26 +22,26 @@ if(isset($_GET['id'])){
     $gaiolas_id     = $_GET['gaiolas_id'];
 
     date_default_timezone_set('America/Sao_Paulo');
-    $hoje = date("Y-m-d H:i:s");   
+    $hoje = date("Y-m-d H:i:s");
 
-    $result = Retorno:: getID('*','retorno',$_GET['id'],null,null);
+    $result = Retorno::getID('*', 'retorno', $_GET['id'], null, null);
     $qtd_retorno = $result->qtd;
     $calculo = ($qtd_retorno - $qtd_producao);
-    if($calculo == 0 ){
+    if ($calculo == 0) {
         $result->qtd =  $calculo;
-        $result->data = $hoje;
+        $result->data = $_GET['data'];
         $result->status = 1;
         $result->atualizar();
-    }else{
+    } else {
         $result->qtd =  $calculo;
-        $result->data = $hoje;
+        $result->data = $_GET['data'];
         $result->status = 0;
         $result->atualizar();
     }
 
     $item = new Entrega;
 
-    $item->data                        = $hoje;
+    $item->data                        = $_GET['data'];
     $item->qtd                         = $qtd_producao;
     $item->producao_id                 = $producao_id;
     $item->entregadores_id             = $entregador_id;
@@ -51,12 +51,4 @@ if(isset($_GET['id'])){
     header('location: retorno-list.php');
 
     exit;
-
-
-    
 }
-
-
-
-
-

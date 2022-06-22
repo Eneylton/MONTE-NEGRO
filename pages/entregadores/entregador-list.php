@@ -16,7 +16,7 @@ define('BRAND', 'Entregadores');
 Login::requireLogin();
 
 if (isset($_POST['id'])) {
-  
+
     $id = $_POST['id'];
 
     $rotas = Rota::getList('*', 'rotas', 'regioes_id= ' . $id, null, null);
@@ -62,15 +62,18 @@ $listar = Entregador::getList(
     veiculos AS v ON (e.veiculos_id = v.id)
     INNER JOIN
     regioes AS r ON (r.id = e.regioes_id)',
-    null,'e.apelido ASC',null);
-    
-    $veiculos = Veiculo::getList('*', 'veiculos');
-    $servicos = Servico::getList('*', 'servicos', null, 'nome ASC');
-    $setores = Setor::getList('*', 'setores');
-    $pagamentos = FormaPagamento::getList('*', 'forma_pagamento');
-    $regioes = Regiao::getList('*', 'regioes', null, 'nome ASC');
-    
-    
+    null,
+    'e.apelido ASC',
+    null
+);
+
+$veiculos = Veiculo::getList('*', 'veiculos');
+$servicos = Servico::getList('*', 'servicos', null, 'nome ASC');
+$setores = Setor::getList('*', 'setores');
+$pagamentos = FormaPagamento::getList('*', 'forma_pagamento');
+$regioes = Regiao::getList('*', 'regioes', null, 'nome ASC');
+
+
 include __DIR__ . '../../../includes/layout/header.php';
 include __DIR__ . '../../../includes/layout/top.php';
 include __DIR__ . '../../../includes/layout/menu.php';
@@ -81,38 +84,81 @@ include __DIR__ . '../../../includes/layout/footer.php';
 
 ?>
 
-<script>
-    $("#regioes").on("change", function() {
-
-        var rg = $("#regioes").val();
-        $.ajax({
-            url: 'entregador-list.php',
-            type: 'POST',
-            data: {
-                id: rg 
-            },
-
-            success: function(data) {
-                $("#rota").css({
-                    'display': 'block'
-                });
-                $("#rota").html(data);
-            }
-        })
-
-    });
-</script>
 
 <script>
-
-async function Editar(id){
+async function Editar(id) {
     const dadosResp = await fetch('entregador-modal.php?id=' + id);
     const result = await dadosResp.json();
-  
+
     const editModal = new bootstrap.Modal(document.getElementById("editModal"));
     editModal.show();
     document.querySelector(".edit-modal").innerHTML = result['dados'];
- 
-}
 
+}
+</script>
+
+
+<script>
+$("#regioes").on("change", function() {
+
+    var rg = $("#regioes").val();
+    $.ajax({
+        url: 'entregador-list.php',
+        type: 'POST',
+        data: {
+            id: rg
+        },
+
+        success: function(data) {
+            $("#rota").css({
+                'display': 'block'
+            });
+            $("#rota").html(data);
+        }
+    })
+
+});
+</script>
+
+<script>
+$("#regioes2").on("change", function() {
+
+    var rg = $("#regioes2").val();
+    $.ajax({
+        url: 'entregador-list.php',
+        type: 'POST',
+        data: {
+            id: rg
+        },
+
+        success: function(data) {
+            $("#rota2").css({
+                'display': 'block'
+            });
+            $("#rota2").html(data);
+        }
+    })
+
+});
+</script>
+
+<script>
+async function Calculo(valor) {
+    console.log(valor);
+    $.ajax({
+        url: 'entregador-modal.php',
+        type: 'POST',
+        data: {
+            id2: valor
+        },
+
+        success: function(data) {
+            $("#resultado").css({
+                'display': 'block'
+            });
+            $("#resultado").html(data);
+        }
+
+    });
+}
 </script>

@@ -18,6 +18,9 @@ class Producao
     public $status;
     public $qtd;
     public $regioes_id;
+    public $setores_id;
+    public $servicos_id;
+    public $rotas_id;
     public $usuarios_id;
 
     public function cadastar()
@@ -34,9 +37,12 @@ class Producao
             'receber_id'                  => $this->receber_id,
             'status'                      => $this->status,
             'regioes_id'                  => $this->regioes_id,
+            'setores_id'                  => $this->setores_id,
+            'servicos_id'                 => $this->servicos_id,
+            'rotas_id'                    => $this->rotas_id,
             'usuarios_id'                 => $this->usuarios_id,
             'qtd'                         => $this->qtd
-           
+
 
         ]);
 
@@ -47,13 +53,15 @@ class Producao
     {
         return (new Database('producao'))->update('id = ' . $this->id, [
 
-           
             'data_inicio'                 => $this->data_inicio,
             'data_fim'                    => $this->data_fim,
             'entregadores_id'             => $this->entregadores_id,
             'receber_id'                  => $this->receber_id,
             'status'                      => $this->status,
             'regioes_id'                  => $this->regioes_id,
+            'setores_id'                  => $this->setores_id,
+            'servicos_id'                 => $this->servicos_id,
+            'rotas_id'                    => $this->rotas_id,
             'usuarios_id'                 => $this->usuarios_id,
             'qtd'                         => $this->qtd
 

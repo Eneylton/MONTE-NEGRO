@@ -14,7 +14,7 @@ foreach ($listar as $item) {
       case '2':
          $cor = "badge-danger";
          $cor2 = "btn btn-danger";
-         $posion ="-right";
+         $posion = "-right";
          $icon = "fas fa-arrow-right";
          $disabled = "disabled";
          break;
@@ -22,7 +22,7 @@ foreach ($listar as $item) {
       default:
          $cor = "badge-warning";
          $cor2 = "btn btn-warning";
-         $posion ="-left";
+         $posion = "-left";
          $icon = "fas fa-arrow-left";
          $disabled = "";
          break;
@@ -30,8 +30,8 @@ foreach ($listar as $item) {
 
    $resultados .= '<tr>
                       <td style="display:none">' . $item->id . '</td>
-                      <td style="display:none">' . $item->gaiolas_id. '</td>
-                      <td style="display:none">' . $item->tipo_id. '</td>
+                      <td style="display:none">' . $item->gaiolas_id . '</td>
+                      <td style="display:none">' . $item->tipo_id . '</td>
                       <td style="display:none">' . $item->data . '</td>
                       <td style="display:none">' . $item->qtd . '</td>
                       <td style="display:none">' . $item->apelido . '</td>
@@ -55,7 +55,7 @@ foreach ($listar as $item) {
                       
                       
 
-                       <a href="reentrega-insert.php?dev_id='.$item->id.'&producao_id=' . $item->producao_id.'&data='.$item->data.'&qtd='.$item->qtd.'&entregador_ID='. $item->entregadores_id.'&tipo_id='.$item->tipo_id.'">
+                       <a href="reentrega-insert.php?dev_id=' . $item->id . '&producao_id=' . $item->producao_id . '&data=' . $item->data . '&qtd=' . $item->qtd . '&entregador_ID=' . $item->entregadores_id . '&tipo_id=' . $item->tipo_id . '">
                        <button type="button" class="' . $cor2 . '"><i class="fas fa-arrow-left" aria-hidden="true" ></i>&nbsp; &nbsp;  Devolver</button>
                        </a>
 
@@ -95,248 +95,269 @@ foreach ($paginas as $key => $pagina) {
 ?>
 
 <section class="content">
-   <div class="container-fluid">
-      <div class="row">
-         <div class="col-12">
-            <div class="card card-purple">
-               <div class="card-header">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="card card-purple">
+                    <div class="card-header">
 
-                  <form method="get">
-                     <div class="row ">
-                        <div class="col-4">
+                        <form method="get">
+                            <div class="row ">
+                                <div class="col-4">
 
-                           <label>Buscar por Nome</label>
-                           <input type="text" class="form-control" name="buscar" value="<?= $buscar ?>">
+                                    <label>Buscar por Nome</label>
+                                    <input type="text" class="form-control" name="buscar" value="<?= $buscar ?>">
 
-                        </div>
-
-
-                        <div class="col d-flex align-items-end">
-                           <button type="submit" class="btn btn-warning" name="">
-                              <i class="fas fa-search"></i>
-
-                              Pesquisar
-
-                           </button>
-
-                        </div>
+                                </div>
 
 
-                     </div>
+                                <div class="col d-flex align-items-end">
+                                    <button type="submit" class="btn btn-warning" name="">
+                                        <i class="fas fa-search"></i>
 
-                  </form>
-               </div>
+                                        Pesquisar
 
-               <div class="table-responsive">
+                                    </button>
+
+                                </div>
 
 
-                  <table class="table table-bordered table-dark table-bordered table-hover table-striped">
-                     <thead>
-                        <tr>
-                           <td colspan="8">
-                              <button type="submit" class="btn btn-default float-right" data-toggle="modal" data-target="#modal-data"> <i class="fas fa-print"></i> &nbsp; IMPRIMIR RELATÓRIOS</button>
-                           </td>
-                        </tr>
+                            </div>
 
-                        <tr>
-                           <th style="text-align: left; width:80px"> CÓDIGO </th>
-                           <th> DATA </th>
-                           <th> ENTREGADORES </th>
-                           <th> OCORRÊNCIAS </th>
-                           <th> TIPO </th>
-                           <th> GAIOLAS </th>
-                           <th style="text-align:center"> QTD </th>
-                           <th style="text-align: center; width:400px"> AÇÃO </th>
-                        </tr>
-                     </thead>
-                     <tbody>
-                        <?= $resultados ?>
-                     </tbody>
+                        </form>
+                    </div>
 
-                     <tr>
-                        <td colspan="6" style="text-align: right;"> QUANTIDADE TOTAL </td>
+                    <div class="table-responsive">
 
-                        <td colspan="1" style="text-transform:uppercase; text-align:center; ">
-                           <h5><span class="badge badge-pill badge-primary" style="font-size: 18px;"><i class="fa fa-check" aria-hidden="true"></i> &nbsp; <?= $soma ?></span></h5>
-                        </td>
-                        <td></td>
-                     </tr>
 
-                  </table>
+                        <table class="table table-bordered table-dark table-bordered table-hover table-striped">
+                            <thead>
+                                <tr>
+                                    <td colspan="8">
+                                        <button type="submit" class="btn btn-default float-right" data-toggle="modal"
+                                            data-target="#modal-data"> <i class="fas fa-print"></i> &nbsp; IMPRIMIR
+                                            RELATÓRIOS</button>
+                                    </td>
+                                </tr>
 
-               </div>
+                                <tr>
+                                    <th style="text-align: left; width:80px"> CÓDIGO </th>
+                                    <th> DATA </th>
+                                    <th> ENTREGADORES </th>
+                                    <th> OCORRÊNCIAS </th>
+                                    <th> TIPO </th>
+                                    <th> GAIOLAS </th>
+                                    <th style="text-align:center"> QTD </th>
+                                    <th style="text-align: center; width:400px"> AÇÃO </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?= $resultados ?>
+                            </tbody>
 
+                            <tr>
+                                <td colspan="6" style="text-align: right;"> QUANTIDADE TOTAL </td>
+
+                                <td colspan="1" style="text-transform:uppercase; text-align:center; ">
+                                    <h5><span class="badge badge-pill badge-primary" style="font-size: 18px;"><i
+                                                class="fa fa-check" aria-hidden="true"></i> &nbsp; <?= $soma ?></span>
+                                    </h5>
+                                </td>
+                                <td></td>
+                            </tr>
+
+                        </table>
+
+                    </div>
+
+
+                </div>
 
             </div>
 
-         </div>
+        </div>
 
-      </div>
-
-   </div>
+    </div>
 
 </section>
 
 <?= $paginacao ?>
 
-
-
 <div class="modal fade" id="modal-data">
-   <div class="modal-dialog modal-lg">
-      <div class="modal-content ">
-         <form action="./retorno-gerar.php" method="GET" enctype="multipart/form-data">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content ">
+            <form action="./retorno-gerar.php" method="GET" enctype="multipart/form-data">
 
-            <div class="modal-header">
-               <h4 class="modal-title">Relatórios
-               </h4>
-               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-               </button>
-            </div>
-            <div class="card-body">
-
-
-               <div class="form-group">
-
-                  <div class="row">
-                     <div class="col-lg-4 col-4">
-                        <input class="form-control" type="date" value="<?php echo date('Y-m-d') ?>" name="dataInicio">
-                     </div>
+                <div class="modal-header">
+                    <h4 class="modal-title">Relatórios
+                    </h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="card-body">
 
 
-                     <div class="col-lg-4 col-4">
-                        <input class="form-control" type="date" value="<?php echo date('Y-m-d') ?>" name="dataFim">
-                     </div>
+                    <div class="form-group">
+
+                        <div class="row">
+                            <div class="col-lg-4 col-4">
+                                <input class="form-control" type="date" value="<?php echo date('Y-m-d') ?>"
+                                    name="dataInicio">
+                            </div>
 
 
-                     <div class="col-lg-4 col-4">
+                            <div class="col-lg-4 col-4">
+                                <input class="form-control" type="date" value="<?php echo date('Y-m-d') ?>"
+                                    name="dataFim">
+                            </div>
 
-                        <select class="form-control select2" name="entregadores_id">
-                           <option value=""> Entregadores </option>
-                           <?php
+
+                            <div class="col-lg-4 col-4">
+
+                                <select class="form-control select2" name="entregadores_id">
+                                    <option value=""> Entregadores </option>
+                                    <?php
 
                            foreach ($entregadores as $item) {
                               echo '<option value="' . $item->id . '">' . $item->apelido . '</option>';
                            }
                            ?>
 
-                        </select>
+                                </select>
 
-                     </div>
-                  </div>
-                  <p></p>
+                            </div>
+                        </div>
+                        <p></p>
 
-                  <div class="row">
+                        <div class="row">
 
-                     <div class="col-lg-4 col-4">
+                            <div class="col-lg-4 col-4">
 
-                        <select class="form-control select2" name="ocorrencias_id">
-                           <option value=""> Ocorrências </option>
-                           <?php
+                                <select class="form-control select2" name="ocorrencias_id">
+                                    <option value=""> Ocorrências </option>
+                                    <?php
 
                            foreach ($ocorrencias as $item) {
                               echo '<option value="' . $item->id . '">' . $item->nome . '</option>';
                            }
                            ?>
 
-                        </select>
+                                </select>
 
-                     </div>
-                     <div class="col-lg-4 col-4">
+                            </div>
+                            <div class="col-lg-4 col-4">
 
-                        <select class="form-control select2" name="tipo_id">
-                           <option value=""> Tipo </option>
-                           <?php
+                                <select class="form-control select2" name="tipo_id">
+                                    <option value=""> Tipo </option>
+                                    <?php
 
                            foreach ($tipos as $item) {
                               echo '<option value="' . $item->id . '">' . $item->nome . '</option>';
                            }
                            ?>
 
-                        </select>
+                                </select>
 
-                     </div>
-                     <div class="col-lg-4 col-4">
+                            </div>
+                            <div class="col-lg-4 col-4">
 
-                        <select class="form-control select2" name="gaiolas_id">
-                           <option value=""> Gaiolas </option>
-                           <?php
+                                <select class="form-control select2" name="gaiolas_id">
+                                    <option value=""> Gaiolas </option>
+                                    <?php
 
                            foreach ($gaiolas as $item) {
                               echo '<option value="' . $item->id . '">' . $item->nome . '</option>';
                            }
                            ?>
 
-                        </select>
+                                </select>
 
-                     </div>
+                            </div>
 
-                  </div>
+                        </div>
 
 
-               </div>
+                    </div>
 
-            </div>
-            <div class="modal-footer justify-content-between">
-               <button type="button" class="btn btn-danger" data-dismiss="modal">Fechar</button>
-               <button type="submit" class="btn btn-primary">Gerar relatório</button>
-            </div>
+                </div>
+                <div class="modal-footer justify-content-between">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Fechar</button>
+                    <button type="submit" class="btn btn-primary">Gerar relatório</button>
+                </div>
 
-         </form>
+            </form>
 
-      </div>
-      <!-- /.modal-content -->
-   </div>
-   <!-- /.modal-dialog -->
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
 </div>
 
 <div class="modal fade" id="editmodal">
-   <div class="modal-dialog">
-      <form action="./retorno-insert.php" method="get">
-         <div class="modal-content bg-light">
-            <div class="modal-header">
-               <h4 class="modal-title">Nova entrega
-               </h4>
-               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-               </button>
+    <div class="modal-dialog">
+        <form action="./retorno-insert.php" method="get">
+            <div class="modal-content bg-light">
+                <div class="modal-header">
+                    <h4 class="modal-title">Nova entrega
+                    </h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <input type="hidden" name="id" id="id">
+                    <input type="hidden" name="gaiolas_id" id="gaiolas_id">
+                    <input type="hidden" name="entregadores_id" id="entregadores_id">
+                    <input type="hidden" name="producao_id" id="producao_id">
+
+
+
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="form-group">
+                                <label>Quantidade devolvida</label>
+                                <input
+                                    style="text-transform:uppercase;border:1px #eeee solid;font-size:xx-large;color:#ff0000"
+                                    type="text" class="form-control" name="qtd" id="qtd" disabled>
+                            </div>
+                        </div>
+                        <div class="col-8">
+                            <div class="form-group">
+                                <label>Data da entrega</label>
+                                <input value="<?php
+                                       date_default_timezone_set('America/Sao_Paulo');
+                                       echo date('Y-m-d\TH:i:s', time()); ?>" type="datetime-local"
+                                    class="form-control" name="data">
+                            </div>
+                        </div>
+
+                        <div class="col-3">
+
+                            <div class="form-group">
+                                <label>Entregar</label>
+                                <input style="text-transform:uppercase" type="text" class="form-control" name="entreque"
+                                    required autofocus>
+                            </div>
+
+
+                        </div>
+
+
+
+
+                    </div>
+
+                </div>
+                <div class="modal-footer justify-content-between">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Fechar</button>
+                    <button type="submit" class="btn btn-primary">Concluir
+                    </button>
+                </div>
             </div>
-            <div class="modal-body">
-               <input type="hidden" name="id" id="id">
-               <input type="hidden" name="gaiolas_id" id="gaiolas_id">
-               <input type="hidden" name="entregadores_id" id="entregadores_id">
-               <input type="hidden" name="producao_id" id="producao_id">
+        </form>
 
-               <div class="form-group">
-                  <label>Quantidade devolvida</label>
-                  <input style="text-transform:uppercase;border:1px #eeee solid;font-size:xx-large;color:#ff0000" type="text" class="form-control" name="qtd" id="qtd" disabled>
-               </div>
-
-               <div class="row">
-
-                  <div class="col-6">
-
-                     <div class="form-group">
-                        <label>Quantidade entregue</label>
-                        <input style="text-transform:uppercase" type="text" class="form-control" name="entreque" required>
-                     </div>
-
-
-                  </div>
-
-
-               </div>
-
-            </div>
-            <div class="modal-footer justify-content-between">
-               <button type="button" class="btn btn-danger" data-dismiss="modal">Fechar</button>
-               <button type="submit" class="btn btn-primary">Concluir
-               </button>
-            </div>
-         </div>
-      </form>
-
-      <!-- /.modal-content -->
-   </div>
-   <!-- /.modal-dialog -->
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
 </div>

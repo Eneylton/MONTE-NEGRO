@@ -124,13 +124,13 @@ $resultados = strlen($resultados) ? $resultados : '<tr>
 
             <div class="card back-black">
                <div class="card-header">
-               <button type="submit" class="btn btn-warning" data-toggle="modal" data-target="#modal-default"> <i class="fas fa-plus"></i> &nbsp; Novo</button>
+                  <button type="submit" class="btn btn-warning" data-toggle="modal" data-target="#modal-default"> <i class="fas fa-plus"></i> &nbsp; Novo</button>
                </div>
                <!-- /.card-header -->
                <div class="card-body">
                   <table id="example" class="table table-dark table-hover table-bordered table-striped">
                      <thead>
-                     <tr>
+                        <tr>
                            <th> Nª</th>
                            <th> NOME DE GUERRA</th>
                            <th> TELEFONE </th>
@@ -211,7 +211,7 @@ $resultados = strlen($resultados) ? $resultados : '<tr>
                         <input style="text-transform:uppercase" type="text" class="form-control " name="email">
                      </div>
                   </div>
-                  <div class="col-4">
+                  <div class="col-3">
                      <div class="form-group">
                         <label>Tipo Contratação</label>
                         <select class="form-control" name="tipo" required>
@@ -224,7 +224,7 @@ $resultados = strlen($resultados) ? $resultados : '<tr>
                         </select>
                      </div>
                   </div>
-                  <div class="col-4">
+                  <div class="col-3">
                      <div class="form-group">
                         <label>Forma de Pagamento</label>
                         <select class="form-control select" style="width: 100%;" name="forma_pagamento_id" required>
@@ -239,7 +239,7 @@ $resultados = strlen($resultados) ? $resultados : '<tr>
                         </select>
                      </div>
                   </div>
-                  <div class="col-4">
+                  <div class="col-3">
                      <div class="form-group">
                         <label>Regiões</label>
                         <select class="form-control select" style="width: 100%;" name="regioes" id="regioes">
@@ -252,6 +252,14 @@ $resultados = strlen($resultados) ? $resultados : '<tr>
                            ?>
 
                         </select>
+                     </div>
+                  </div>
+
+                  <div class="col-3">
+                     <div class="form-group">
+
+                        <label>Rota</label>
+                        <select class="form-control" name="rotas[]" id="rota" multiple></select>
                      </div>
                   </div>
 
@@ -400,36 +408,7 @@ $resultados = strlen($resultados) ? $resultados : '<tr>
 </div>
 
 
-<form action="./entregador-edit.php" method="get">
-   <div class="modal fade" id="editModal">
-      <div class="modal-dialog modal-xl">
 
-         <div class="modal-content bg-light">
-            <div class="modal-header">
-               <h4 class="modal-title">Editar
-               </h4>
-               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-               </button>
-            </div>
-            <div class="modal-body">
-
-
-               <span class="edit-modal"></span>
-
-            </div>
-            <div class="modal-footer justify-content-between">
-               <button type="button" class="btn btn-danger" data-dismiss="modal">Fechar</button>
-               <button type="submit" class="btn btn-primary">Salvar
-               </button>
-            </div>
-         </div>
-
-         <!-- /.modal-content -->
-      </div>
-      <!-- /.modal-dialog -->
-   </div>
-</form>
 
 <div class="modal fade" id="listarServicosModal">
    <div class="modal-dialog modal-dialog-centered">
@@ -453,7 +432,6 @@ $resultados = strlen($resultados) ? $resultados : '<tr>
          </div>
          <div class="modal-footer justify-content-between">
             <button type="button" class="btn btn-danger" data-dismiss="modal">Fechar</button>
-            <button type="button" class="btn btn-success" data-dismiss="modal">Fechar</button>
 
          </div>
       </div>
@@ -485,7 +463,7 @@ $resultados = strlen($resultados) ? $resultados : '<tr>
          </div>
          <div class="modal-footer justify-content-between">
             <button type="button" class="btn btn-danger" data-dismiss="modal">Fechar</button>
-            <button type="button" class="btn btn-success" data-dismiss="modal">Fechar</button>
+
          </div>
       </div>
 
@@ -509,7 +487,7 @@ $resultados = strlen($resultados) ? $resultados : '<tr>
             </div>
             <div class="card-body">
 
-               
+
 
             </div>
             <div class="modal-footer justify-content-between">
@@ -524,3 +502,33 @@ $resultados = strlen($resultados) ? $resultados : '<tr>
    </div>
    <!-- /.modal-dialog -->
 </div>
+<form action="./entregador-edit.php" method="get">
+   <div class="modal fade" id="editModal">
+      <div class="modal-dialog modal-xl">
+
+         <div class="modal-content bg-light">
+            <div class="modal-header">
+               <h4 class="modal-title">Editar
+               </h4>
+               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+               </button>
+            </div>
+            <div class="modal-body">
+
+
+               <span class="edit-modal"></span>
+
+            </div>
+            <div class="modal-footer justify-content-between">
+               <button type="button" class="btn btn-danger" data-dismiss="modal">Fechar</button>
+               <button type="submit" class="btn btn-primary">Salvar
+               </button>
+            </div>
+         </div>
+
+         <!-- /.modal-content -->
+      </div>
+      <!-- /.modal-dialog -->
+   </div>
+</form>

@@ -46,7 +46,7 @@ class Receber
     public function atualizar()
     {
         return (new Database('receber'))->update('id = ' . $this->id, [
-            
+
             'data'                      => $this->data,
             'qtd'                       => $this->qtd,
             'disponivel'                => $this->disponivel,
@@ -87,7 +87,7 @@ class Receber
     public static function getClientID($fields, $table, $where, $order, $limit)
     {
         return (new Database('receber'))->select($fields, $table, 'r.clientes_id = ' . $where, $order, $limit)
-        ->fetchAll(PDO::FETCH_CLASS, self::class);
+            ->fetchAll(PDO::FETCH_CLASS, self::class);
     }
 
     public static function getGaiolaID($fields, $table, $where, $order, $limit)

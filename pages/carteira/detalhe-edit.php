@@ -19,15 +19,28 @@ if (isset($_GET['id']) or is_numeric($_GET['id'])) {
     $id_caixa = $_GET['id'];
 }
 
-$entregas = Entrega::getList(' e.id AS id,e.data AS data,e.qtd AS qtd,et.id AS entregadores_id,
-et.apelido AS apelido,st.nome AS setores,sv.id AS servico_id,sv.nome AS servicos,et.valor_boleto AS boleto,
-et.valor_cartao AS cartao,et.valor_pequeno AS pequeno,et.valor_grande AS grande', ' entrega AS e
-INNER JOIN producao AS p ON (e.producao_id = p.id)
-INNER JOIN receber AS r ON (p.receber_id = r.id)
-INNER JOIN setores AS st ON (r.setores_id = st.id)
-INNER JOIN servicos AS sv ON (r.servicos_id = sv.id)
-INNER JOIN entregadores AS et ON (e.entregadores_id = et.id)
-', ' month(e.data) = MONTH(CURRENT_DATE())  AND e.entregadores_id  = ' . $_GET['id']);
+$entregas = Entrega::getList(' e.id AS id,
+e.data AS data,
+e.qtd AS qtd,
+et.id AS entregadores_id,
+et.apelido AS apelido,
+st.nome AS setores,
+sv.id AS servico_id,
+sv.nome AS servicos,
+et.valor_boleto AS boleto,
+et.valor_cartao AS cartao,
+et.valor_pequeno AS pequeno,
+et.valor_grande AS grande', ' entrega AS e
+INNER JOIN
+producao AS p ON (e.producao_id = p.id)
+INNER JOIN
+receber AS r ON (p.receber_id = r.id)
+INNER JOIN
+setores AS st ON (p.setores_id = st.id)
+INNER JOIN
+servicos AS sv ON (p.servicos_id = sv.id)
+INNER JOIN
+entregadores AS et ON (e.entregadores_id = et.id)', ' month(e.data) = MONTH(CURRENT_DATE())  AND e.entregadores_id  = ' . $_GET['id']);
 
 $devolucoes = Devolucao::getList('d.id AS id,
 d.data AS data,
@@ -110,13 +123,13 @@ include __DIR__ . '../../../includes/layout/footer.php';
 
 
 <script type="text/javascript">
-    var ctx = document.getElementById('myChart2').getContext('2d');
-    var myChart = new Chart(ctx, {
-        type: 'bar',
-        data: {
-            labels: [
+var ctx = document.getElementById('myChart2').getContext('2d');
+var myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: [
 
-                <?php
+            <?php
 
                 foreach ($entregas as $item) {
 
@@ -124,11 +137,11 @@ include __DIR__ . '../../../includes/layout/footer.php';
                 }
 
                 ?>
-            ],
-            datasets: [{
-                    label: '• ENTREGAS R$',
-                    data: [
-                        <?php
+        ],
+        datasets: [{
+                label: '• ENTREGAS R$',
+                data: [
+                    <?php
                         $total_entrega = 0;
                         $qtd = 0;
                         $valor_total = 0;
@@ -160,86 +173,86 @@ include __DIR__ . '../../../includes/layout/footer.php';
                         }
 
                         ?>
-                    ],
-                    backgroundColor: [
-                        '#6fe633a8',
-                        '#6fe633a8',
-                        '#6fe633a8',
-                        '#6fe633a8',
-                        '#6fe633a8',
-                        '#6fe633a8',
-                        '#6fe633a8',
-                        '#6fe633a8',
-                        '#6fe633a8',
-                        '#6fe633a8',
-                        '#6fe633a8',
-                        '#6fe633a8',
-                        '#6fe633a8',
-                        '#6fe633a8',
-                        '#6fe633a8',
-                        '#6fe633a8',
-                        '#6fe633a8',
-                        '#6fe633a8',
-                        '#6fe633a8',
-                        '#6fe633a8',
-                        '#6fe633a8',
-                        '#6fe633a8',
-                        '#6fe633a8',
-                        '#6fe633a8',
-                        '#6fe633a8',
-                        '#6fe633a8',
-                        '#6fe633a8',
-                        '#6fe633a8',
-                        '#6fe633a8',
-                        '#6fe633a8',
-                        '#6fe633a8',
-                        '#6fe633a8',
+                ],
+                backgroundColor: [
+                    '#6fe633a8',
+                    '#6fe633a8',
+                    '#6fe633a8',
+                    '#6fe633a8',
+                    '#6fe633a8',
+                    '#6fe633a8',
+                    '#6fe633a8',
+                    '#6fe633a8',
+                    '#6fe633a8',
+                    '#6fe633a8',
+                    '#6fe633a8',
+                    '#6fe633a8',
+                    '#6fe633a8',
+                    '#6fe633a8',
+                    '#6fe633a8',
+                    '#6fe633a8',
+                    '#6fe633a8',
+                    '#6fe633a8',
+                    '#6fe633a8',
+                    '#6fe633a8',
+                    '#6fe633a8',
+                    '#6fe633a8',
+                    '#6fe633a8',
+                    '#6fe633a8',
+                    '#6fe633a8',
+                    '#6fe633a8',
+                    '#6fe633a8',
+                    '#6fe633a8',
+                    '#6fe633a8',
+                    '#6fe633a8',
+                    '#6fe633a8',
+                    '#6fe633a8',
 
-                    ],
-                    borderColor: [
-                        '#6fe633a8',
-                        '#6fe633a8',
-                        '#6fe633a8',
-                        '#6fe633a8',
-                        '#6fe633a8',
-                        '#6fe633a8',
-                        '#6fe633a8',
-                        '#6fe633a8',
-                        '#6fe633a8',
-                        '#6fe633a8',
-                        '#6fe633a8',
-                        '#6fe633a8',
-                        '#6fe633a8',
-                        '#6fe633a8',
-                        '#6fe633a8',
-                        '#6fe633a8',
-                        '#6fe633a8',
-                        '#6fe633a8',
-                        '#6fe633a8',
-                        '#6fe633a8',
-                        '#6fe633a8',
-                        '#6fe633a8',
-                        '#6fe633a8',
-                        '#6fe633a8',
-                        '#6fe633a8',
-                        '#6fe633a8',
-                        '#6fe633a8',
-                        '#6fe633a8',
-                        '#6fe633a8',
-                        '#6fe633a8',
-                        '#6fe633a8',
-                        '#6fe633a8'
+                ],
+                borderColor: [
+                    '#6fe633a8',
+                    '#6fe633a8',
+                    '#6fe633a8',
+                    '#6fe633a8',
+                    '#6fe633a8',
+                    '#6fe633a8',
+                    '#6fe633a8',
+                    '#6fe633a8',
+                    '#6fe633a8',
+                    '#6fe633a8',
+                    '#6fe633a8',
+                    '#6fe633a8',
+                    '#6fe633a8',
+                    '#6fe633a8',
+                    '#6fe633a8',
+                    '#6fe633a8',
+                    '#6fe633a8',
+                    '#6fe633a8',
+                    '#6fe633a8',
+                    '#6fe633a8',
+                    '#6fe633a8',
+                    '#6fe633a8',
+                    '#6fe633a8',
+                    '#6fe633a8',
+                    '#6fe633a8',
+                    '#6fe633a8',
+                    '#6fe633a8',
+                    '#6fe633a8',
+                    '#6fe633a8',
+                    '#6fe633a8',
+                    '#6fe633a8',
+                    '#6fe633a8'
 
-                    ],
-                    borderWidth: 1
-                },
+                ],
+                borderWidth: 1
+            },
 
-                {
-                    label: '• DEVOLUÇÕES •',
-                    data: [
+            {
+                label: '• DEVOLUÇÕES •',
+                data: [
 
 
-                        <?php
+                    <?php
                         $total_entrega = 0;
                         $qtd = 0;
                         $valor_total = 0;
@@ -271,89 +284,89 @@ include __DIR__ . '../../../includes/layout/footer.php';
                         }
 
                         ?>
-                    ],
-                    backgroundColor: [
-                        '#ff0000',
-                        '#ff0000',
-                        '#ff0000',
-                        '#ff0000',
-                        '#ff0000',
-                        '#ff0000',
-                        '#ff0000',
-                        '#ff0000',
-                        '#ff0000',
-                        '#ff0000',
-                        '#ff0000',
-                        '#ff0000',
-                        '#ff0000',
-                        '#ff0000',
-                        '#ff0000',
-                        '#ff0000',
-                        '#ff0000',
-                        '#ff0000',
-                        '#ff0000',
-                        '#ff0000',
-                        '#ff0000',
-                        '#ff0000',
-                        '#ff0000',
-                        '#ff0000',
-                        '#ff0000',
-                        '#ff0000',
-                        '#ff0000',
-                        '#ff0000',
-                        '#ff0000',
-                        '#ff0000',
-                        '#ff0000',
-                        '#ff0000'
-                    ],
-                    borderColor: [
-                        '#ff0000',
-                        '#ff0000',
-                        '#ff0000',
-                        '#ff0000',
-                        '#ff0000',
-                        '#ff0000',
-                        '#ff0000',
-                        '#ff0000',
-                        '#ff0000',
-                        '#ff0000',
-                        '#ff0000',
-                        '#ff0000',
-                        '#ff0000',
-                        '#ff0000',
-                        '#ff0000',
-                        '#ff0000',
-                        '#ff0000',
-                        '#ff0000',
-                        '#ff0000',
-                        '#ff0000',
-                        '#ff0000',
-                        '#ff0000',
-                        '#ff0000',
-                        '#ff0000',
-                        '#ff0000',
-                        '#ff0000',
-                        '#ff0000',
-                        '#ff0000',
-                        '#ff0000',
-                        '#ff0000',
-                        '#ff0000',
-                        '#ff0000'
+                ],
+                backgroundColor: [
+                    '#ff0000',
+                    '#ff0000',
+                    '#ff0000',
+                    '#ff0000',
+                    '#ff0000',
+                    '#ff0000',
+                    '#ff0000',
+                    '#ff0000',
+                    '#ff0000',
+                    '#ff0000',
+                    '#ff0000',
+                    '#ff0000',
+                    '#ff0000',
+                    '#ff0000',
+                    '#ff0000',
+                    '#ff0000',
+                    '#ff0000',
+                    '#ff0000',
+                    '#ff0000',
+                    '#ff0000',
+                    '#ff0000',
+                    '#ff0000',
+                    '#ff0000',
+                    '#ff0000',
+                    '#ff0000',
+                    '#ff0000',
+                    '#ff0000',
+                    '#ff0000',
+                    '#ff0000',
+                    '#ff0000',
+                    '#ff0000',
+                    '#ff0000'
+                ],
+                borderColor: [
+                    '#ff0000',
+                    '#ff0000',
+                    '#ff0000',
+                    '#ff0000',
+                    '#ff0000',
+                    '#ff0000',
+                    '#ff0000',
+                    '#ff0000',
+                    '#ff0000',
+                    '#ff0000',
+                    '#ff0000',
+                    '#ff0000',
+                    '#ff0000',
+                    '#ff0000',
+                    '#ff0000',
+                    '#ff0000',
+                    '#ff0000',
+                    '#ff0000',
+                    '#ff0000',
+                    '#ff0000',
+                    '#ff0000',
+                    '#ff0000',
+                    '#ff0000',
+                    '#ff0000',
+                    '#ff0000',
+                    '#ff0000',
+                    '#ff0000',
+                    '#ff0000',
+                    '#ff0000',
+                    '#ff0000',
+                    '#ff0000',
+                    '#ff0000'
 
-                    ],
-                    borderWidth: 1
-                }
-
-            ]
-        },
-        options: {
-            scales: {
-                yAxes: [{
-                    ticks: {
-                        beginAtZero: true
-                    }
-                }]
+                ],
+                borderWidth: 1
             }
+
+        ]
+    },
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true
+                }
+            }]
         }
-    });
+    }
+});
 </script>

@@ -1,6 +1,6 @@
-<?php 
+<?php
 
-require __DIR__.'../../../vendor/autoload.php';
+require __DIR__ . '../../../vendor/autoload.php';
 
 use App\Entidy\Gaiola;
 use App\Entidy\Receber;
@@ -8,52 +8,38 @@ use App\Session\Login;
 
 Login::requireLogin();
 
-$usuariologado = Login:: getUsuarioLogado();
+$usuariologado = Login::getUsuarioLogado();
 
 $usuario = $usuariologado['id'];
-
 
 $contador = 0;
 $soma = 0;
 
-if(isset($_POST['rotas'])){
+$id_gaiola = 116;
 
-    foreach ($_POST['rotas'] as $contar) {
-    
-        $contador +=1;
-        
-    }
+$soma = $_POST['qtd'] / 1;
 
-   foreach ($_POST['rotas'] as $key) {
+$value = Gaiola::getID('*', 'gaiolas', 93, null, null);
 
-    $soma = $_POST['qtd'] / $contador;
+$qtd  = $value->qtd;
 
-    $value = Gaiola:: getID('*','gaiolas',$key,null,null);
+$calculado = ($qtd + $soma);
 
-        $qtd  = $value->qtd;
+$value->qtd = $calculado;
 
-        $calculado = ($qtd + $soma);
-
-        $value->qtd = $calculado;
-
-        $value->atualizar();
+$value->atualizar();
 
 
-        $item = new Receber;
-        $item->data            = $_POST['data'];
-        $item->disponivel      = $soma;
-        $item->qtd             = $soma;
-        $item->clientes_id     = $_POST['clientes_id'];
-        $item->setores_id      = $_POST['setores'];
-        $item->servicos_id     = $_POST['servicos'];
-        $item->usuarios_id     = $usuario;
-        $item->gaiolas_id      = $key;
-        $item->cadastar();
-   }
+$item = new Receber;
+$item->data            = $_POST['data'];
+$item->disponivel      = $_POST['qtd'];
+$item->qtd             = $_POST['qtd'];
+$item->setores_id      = $_POST['setores'];
+$item->servicos_id     = $_POST['servicos'];
+$item->clientes_id     = $_POST['clientes_id'];
+$item->usuarios_id     = $usuario;
+$item->gaiolas_id      = $id_gaiola;
+$item->cadastar();
 
-   header('location: receber-list.php?');
-   exit;
-
-}
-   
-   
+header('location: receber-list.php?');
+exit;

@@ -5,6 +5,7 @@ require __DIR__ . '../../../vendor/autoload.php';
 use App\Entidy\Entregador;
 use App\Entidy\EntregadorServicos;
 use App\Entidy\EntregadorSetor;
+use App\Entidy\EntreRotas;
 use App\Entidy\Servico;
 use App\Entidy\Setor;
 use App\Session\Login;
@@ -78,16 +79,14 @@ if (isset($_POST['nome'])) {
 
             $item = new EntregadorSetor;
 
-            if($id != ""){
+            if ($id != "") {
 
-            $checked = 1;
+                $checked = 1;
+            } else {
 
-            }else{
-
-            $checked = 0;
-
+                $checked = 0;
             }
-        
+
             $item->entregadores_id = $entregador_id;
             $item->setores_id = $id;
             $item->valor = $checked;
@@ -99,7 +98,7 @@ if (isset($_POST['nome'])) {
 
         foreach ($_POST['servicos'] as $id) {
 
-            $servicos = Servico::getID('*', 'servicos', $id, null, null);;
+            $servicos = Servico::getID('*', 'servicos', $id, null, null);
 
             $setor_id = $servicos->id;
 
@@ -108,6 +107,19 @@ if (isset($_POST['nome'])) {
             $item->entregadores_id = $entregador_id;
             $item->servicos_id = $id;
             $item->cadastar();
+        }
+    }
+
+    if (isset($_POST['rotas'])) {
+
+        foreach ($_POST['rotas'] as $id) {
+
+            $cad = new EntreRotas;
+
+            $cad->entregadores_id = $entregador_id;
+            $cad->regioes_id = $_POST['regioes'];
+            $cad->rotas_id = $id;
+            $cad->cadastar();
         }
     }
 

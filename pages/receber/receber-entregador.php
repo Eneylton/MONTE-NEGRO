@@ -60,7 +60,7 @@ if (isset($_POST['qtd'])) {
             break;
 
         default:
-            $datafim = date('Y-m-d', strtotime("+7 days", strtotime($_POST['data_inicio'])));
+            $datafim = date('Y-m-d', strtotime("+7 days", strtotime($_POST['data_fim'])));
             break;
     }
 

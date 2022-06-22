@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace App\Entidy;
 
@@ -6,42 +6,43 @@ use \App\Db\Database;
 
 use \PDO;
 
-class Entrega {
-    
+class Entrega
+{
+
 
     public $id;
     public $data;
     public $qtd;
     public $producao_id;
     public $entregadores_id;
-    
-    public function cadastar(){
+
+    public function cadastar()
+    {
 
 
-        $obdataBase = new Database('entrega');  
-        
+        $obdataBase = new Database('entrega');
+
         $this->id = $obdataBase->insert([
-          
+
             'data'                         => $this->data,
             'qtd'                          => $this->qtd,
             'producao_id'                  => $this->producao_id,
             'entregadores_id'              => $this->entregadores_id
-          
+
         ]);
 
         return true;
-
     }
 
-    public function atualizar(){
-        return (new Database ('entrega'))->update('id = ' .$this-> id, [
-    
+    public function atualizar()
+    {
+        return (new Database('entrega'))->update('id = ' . $this->id, [
+
             'data'                         => $this->data,
             'qtd'                          => $this->qtd,
             'producao_id'                  => $this->producao_id,
             'entregadores_id'              => $this->entregadores_id
         ]);
-      
     }
 
     public static function getList($fields = null, $table = null, $where = null, $order = null, $limit = null)
@@ -51,11 +52,18 @@ class Entrega {
             ->fetchAll(PDO::FETCH_CLASS, self::class);
     }
 
+    public static function getTotal($fields = null, $table = null, $where = null, $order = null, $limit = null)
+    {
+
+        return (new Database('entrega'))->select($fields, $table, $where, $order, $limit)
+            ->fetchObject(self::class);
+    }
+
     public static function getListID($fields = null, $table = null, $where = null, $order = null, $limit = null)
     {
 
         return (new Database('entrega'))->select($fields, $table, $where, $order, $limit)
-        ->fetchObject(self::class);
+            ->fetchObject(self::class);
     }
 
     public static function getQtd($fields = null, $table = null, $where = null, $order = null, $limit = null)
@@ -81,18 +89,15 @@ class Entrega {
     }
 
 
-public function excluir(){
-    return (new Database ('entrega'))->delete('id = ' .$this->id);
-  
-}
+    public function excluir()
+    {
+        return (new Database('entrega'))->delete('id = ' . $this->id);
+    }
 
 
-public static function getUsuarioPorEmail($email){
+    public static function getUsuarioPorEmail($email)
+    {
 
-    return (new Database ('entrega'))->select('email = "'.$email.'"')-> fetchObject(self::class);
-
-}
-
-
-
+        return (new Database('entrega'))->select('email = "' . $email . '"')->fetchObject(self::class);
+    }
 }

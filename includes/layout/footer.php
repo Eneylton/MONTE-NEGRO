@@ -1,56 +1,56 @@
 </section>
 </div>
 <footer class="main-footer">
-  <strong>Copyright &copy; <?php echo date('Y') ?> <a href="https://adminlte.io">Eneylton Barros</a>.</strong>
-  eneylton@hotmail.com.
-  <div class="float-right d-none d-sm-inline-block">
-    <b>Versão </b> <?php echo date('Y') ?>
-  </div>
+    <strong>Copyright &copy; <?php echo date('Y') ?> <a href="https://adminlte.io">Eneylton Barros</a>.</strong>
+    eneylton@hotmail.com.
+    <div class="float-right d-none d-sm-inline-block">
+        <b>Versão </b> <?php echo date('Y') ?>
+    </div>
 </footer>
 
 
 
 </div>
 <script>
-  var password = document.getElementById("password"),
+var password = document.getElementById("password"),
     confirm_password = document.getElementById("confirm_password");
 
-  function validatePassword() {
-    
+function validatePassword() {
+
     if (password.value != confirm_password.value) {
-      confirm_password.setCustomValidity("Senhas diferentes!");
+        confirm_password.setCustomValidity("Senhas diferentes!");
     } else {
-      confirm_password.setCustomValidity('');
+        confirm_password.setCustomValidity('');
     }
-  }
+}
 
-  password.onchange = validatePassword;
-  confirm_password.onkeyup = validatePassword;
+password.onchange = validatePassword;
+confirm_password.onkeyup = validatePassword;
 </script>
 
 <script>
-  $('.carousel-indicators .active').removeClass('active');
+$('.carousel-indicators .active').removeClass('active');
 </script>
 
 <script>
-  $.widget.bridge('uibutton', $.ui.button)
+$.widget.bridge('uibutton', $.ui.button)
 </script>
 
 <script>
-  const allRanges = document.querySelectorAll(".range-wrap");
-  allRanges.forEach((wrap) => {
+const allRanges = document.querySelectorAll(".range-wrap");
+allRanges.forEach((wrap) => {
     const range = wrap.querySelector(".range");
     const bubble = wrap.querySelector(".bubble");
 
     range.addEventListener("input", () => {
-      setBubble(range, bubble);
+        setBubble(range, bubble);
     });
 
     // setting bubble on DOM load
     setBubble(range, bubble);
-  });
+});
 
-  function setBubble(range, bubble) {
+function setBubble(range, bubble) {
     const val = range.value;
 
     const min = range.min || 0;
@@ -62,7 +62,7 @@
 
     // yes, 14px is a magic number
     bubble.style.left = `calc(${offset}% - 14px)`;
-  }
+}
 </script>
 
 <script src="../../assets/plugins/jquery-ui/jquery-ui.min.js"></script>
@@ -70,7 +70,7 @@
 <script src="../../assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 <script>
-  $('#exampleModal').on('show.bs.modal', function(event) {
+$('#exampleModal').on('show.bs.modal', function(event) {
     var button = $(event.relatedTarget) // Button that triggered the modal
     var recipient = button.data('whatever') // Extract info from data-* attributes
     // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
@@ -78,9 +78,7 @@
     var modal = $(this)
     modal.find('.modal-title').text('Galeria de imagem ' + recipient)
     modal.find('.modal-body input').val(recipient)
-  })
-
-  
+})
 </script>
 
 
@@ -118,158 +116,165 @@
 <script src="../../assets/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
 <script src="../../assets/plugins/bootstrap-switch/js/bootstrap-switch.min.js"></script>
 
+
+
 <script>
- $(document).on('shown.bs.modal', function (e) {
-        $('[autofocus]', e.target).focus();
-      });
+$(document).on('shown.bs.modal', function(e) {
+    $('[autofocus]', e.target).focus();
+});
 </script>
 
 <script>
-  $(function () {
+$(function() {
 
-    $("input[data-bootstrap-switch]").each(function(){
-      $(this).bootstrapSwitch('state', $(this).prop('checked'));
+    $("input[data-bootstrap-switch]").each(function() {
+        $(this).bootstrapSwitch('state', $(this).prop('checked'));
     });
 
     $("#example").DataTable({
-      "responsive": true, "lengthChange": false, "autoWidth": false,"ordering": false,
-      "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+        "responsive": true,
+        "lengthChange": false,
+        "autoWidth": false,
+        "ordering": false,
+        "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
     }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-   
-  });
+
+});
 </script>
 
 <script>
-  $('.datepicker').datepicker({
+$('.datepicker').datepicker({
     format: 'mm/dd/yyyy',
     startDate: '-3d'
-  });
+});
 </script>
 
 <script type="text/javascript">
-  $(document).ready(function() {
+$(document).ready(function() {
     $("#cpf").mask("000.000.000-00")
     $("#cel").mask("(00) 00000-0000")
     $("#dinheiro").mask("999.999.990,00", {
-      reverse: true
+        reverse: true
     })
-  })
+})
 </script>
 
 <script type="text/javascript">
-  $(document).ready(function() {
+$(document).ready(function() {
     $("#cpf").mask("000.000.000-00")
     $("#telefone").mask("(00) 0000-0000")
     $("#dinheiro3").mask("999.999.990,00", {
-      reverse: true
+        reverse: true
     })
-  })
+})
 </script>
 <script type="text/javascript">
-  $(document).ready(function() {
+$(document).ready(function() {
     $("#cpf").mask("000.000.000-00")
     $("#telefone").mask("(00) 0000-0000")
     $("#dinheiro2").mask("999.999.990,00", {
-      reverse: true
+        reverse: true
     })
-  })
+})
 </script>
 
 
 
 <script>
-  $(function() {
+$(function() {
     $(document).on('click', '[data-toggle="lightbox"]', function(event) {
-      event.preventDefault();
-      $(this).ekkoLightbox({
-        alwaysShowClose: true
-      });
+        event.preventDefault();
+        $(this).ekkoLightbox({
+            alwaysShowClose: true
+        });
     });
 
     $('.filter-container').filterizr({
-      gutterPixels: 3
+        gutterPixels: 3
     });
     $('.btn[data-filter]').on('click', function() {
-      $('.btn[data-filter]').removeClass('active');
-      $(this).addClass('active');
+        $('.btn[data-filter]').removeClass('active');
+        $(this).addClass('active');
     });
-  })
+})
 </script>
 
 <script type="text/javascript">
-  $(document).ready(function() {
+$(document).ready(function() {
 
     $("#form1 #select-all").click(function() {
 
-      $("#form1 input[type='checkbox'").prop('checked', this.checked);
+        $("#form1 input[type='checkbox'").prop('checked', this.checked);
     });
 
-  });
+});
 </script>
 <script>
-  $(function() {
+$(function() {
     //Initialize Select2 Elements
     $('.select2').select2()
 
     //Initialize Select2 Elements
     $('.select2bs4').select2({
-      theme: 'bootstrap4'
+        theme: 'bootstrap4'
     })
 
     //Datemask dd/mm/yyyy
     $('#datemask').inputmask('dd/mm/yyyy', {
-      'placeholder': 'dd/mm/yyyy'
+        'placeholder': 'dd/mm/yyyy'
     })
     //Datemask2 mm/dd/yyyy
     $('#datemask2').inputmask('mm/dd/yyyy', {
-      'placeholder': 'mm/dd/yyyy'
+        'placeholder': 'mm/dd/yyyy'
     })
     //Money Euro
     $('[data-mask]').inputmask()
 
     //Date picker
     $('#reservationdate').datetimepicker({
-      format: 'L'
+        format: 'L'
     });
 
     //Date and time picker
     $('#reservationdatetime').datetimepicker({
-      icons: {
-        time: 'far fa-clock'
-      }
+        icons: {
+            time: 'far fa-clock'
+        }
     });
 
     //Date range picker
     $('#reservation').daterangepicker()
     //Date range picker with time picker
     $('#reservationtime').daterangepicker({
-      timePicker: true,
-      timePickerIncrement: 30,
-      locale: {
-        format: 'MM/DD/YYYY hh:mm A'
-      }
+        timePicker: true,
+        timePickerIncrement: 30,
+        locale: {
+            format: 'MM/DD/YYYY hh:mm A'
+        }
     })
     //Date range as a button
     $('#daterange-btn').daterangepicker({
-        ranges: {
-          'Today': [moment(), moment()],
-          'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
-          'Last 7 Days': [moment().subtract(6, 'days'), moment()],
-          'Last 30 Days': [moment().subtract(29, 'days'), moment()],
-          'This Month': [moment().startOf('month'), moment().endOf('month')],
-          'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+            ranges: {
+                'Today': [moment(), moment()],
+                'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+                'Last 7 Days': [moment().subtract(6, 'days'), moment()],
+                'Last 30 Days': [moment().subtract(29, 'days'), moment()],
+                'This Month': [moment().startOf('month'), moment().endOf('month')],
+                'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month')
+                    .endOf('month')
+                ]
+            },
+            startDate: moment().subtract(29, 'days'),
+            endDate: moment()
         },
-        startDate: moment().subtract(29, 'days'),
-        endDate: moment()
-      },
-      function(start, end) {
-        $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'))
-      }
+        function(start, end) {
+            $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'))
+        }
     )
 
     //Timepicker
     $('#timepicker').datetimepicker({
-      format: 'LT'
+        format: 'LT'
     })
 
     //Bootstrap Duallistbox
@@ -281,29 +286,29 @@
     $('.my-colorpicker2').colorpicker()
 
     $('.my-colorpicker2').on('colorpickerChange', function(event) {
-      $('.my-colorpicker2 .fa-square').css('color', event.color.toString());
+        $('.my-colorpicker2 .fa-square').css('color', event.color.toString());
     })
 
     $("input[data-bootstrap-switch]").each(function() {
-      $(this).bootstrapSwitch('state', $(this).prop('checked'));
+        $(this).bootstrapSwitch('state', $(this).prop('checked'));
     })
 
-  })
-  // BS-Stepper Init
-  document.addEventListener('DOMContentLoaded', function() {
+})
+// BS-Stepper Init
+document.addEventListener('DOMContentLoaded', function() {
     window.stepper = new Stepper(document.querySelector('.bs-stepper'))
-  })
+})
 
-  // DropzoneJS Demo Code Start
-  Dropzone.autoDiscover = false
+// DropzoneJS Demo Code Start
+Dropzone.autoDiscover = false
 
-  // Get the template HTML and remove it from the doumenthe template HTML and remove it from the doument
-  var previewNode = document.querySelector("#template")
-  previewNode.id = ""
-  var previewTemplate = previewNode.parentNode.innerHTML
-  previewNode.parentNode.removeChild(previewNode)
+// Get the template HTML and remove it from the doumenthe template HTML and remove it from the doument
+var previewNode = document.querySelector("#template")
+previewNode.id = ""
+var previewTemplate = previewNode.parentNode.innerHTML
+previewNode.parentNode.removeChild(previewNode)
 
-  var myDropzone = new Dropzone(document.body, { // Make the whole body a dropzone
+var myDropzone = new Dropzone(document.body, { // Make the whole body a dropzone
     url: "/target-url", // Set the url
     thumbnailWidth: 80,
     thumbnailHeight: 80,
@@ -312,43 +317,42 @@
     autoQueue: false, // Make sure the files aren't queued until manually added
     previewsContainer: "#previews", // Define the container to display the previews
     clickable: ".fileinput-button" // Define the element that should be used as click trigger to select files.
-  })
+})
 
-  myDropzone.on("addedfile", function(file) {
+myDropzone.on("addedfile", function(file) {
     // Hookup the start button
     file.previewElement.querySelector(".start").onclick = function() {
-      myDropzone.enqueueFile(file)
+        myDropzone.enqueueFile(file)
     }
-  })
+})
 
-  // Update the total progress bar
-  myDropzone.on("totaluploadprogress", function(progress) {
+// Update the total progress bar
+myDropzone.on("totaluploadprogress", function(progress) {
     document.querySelector("#total-progress .progress-bar").style.width = progress + "%"
-  })
+})
 
-  myDropzone.on("sending", function(file) {
+myDropzone.on("sending", function(file) {
     // Show the total progress bar when upload starts
     document.querySelector("#total-progress").style.opacity = "1"
     // And disable the start button
     file.previewElement.querySelector(".start").setAttribute("disabled", "disabled")
-  })
+})
 
-  // Hide the total progress bar when nothing's uploading anymore
-  myDropzone.on("queuecomplete", function(progress) {
+// Hide the total progress bar when nothing's uploading anymore
+myDropzone.on("queuecomplete", function(progress) {
     document.querySelector("#total-progress").style.opacity = "0"
-  })
+})
 
-  // Setup the buttons for all transfers
-  // The "add files" button doesn't need to be setup because the config
-  // `clickable` has already been specified.
-  document.querySelector("#actions .start").onclick = function() {
+// Setup the buttons for all transfers
+// The "add files" button doesn't need to be setup because the config
+// `clickable` has already been specified.
+document.querySelector("#actions .start").onclick = function() {
     myDropzone.enqueueFiles(myDropzone.getFilesWithStatus(Dropzone.ADDED))
-  }
-  document.querySelector("#actions .cancel").onclick = function() {
+}
+document.querySelector("#actions .cancel").onclick = function() {
     myDropzone.removeAllFiles(true)
-  }
-  // DropzoneJS Demo Code End
-
+}
+// DropzoneJS Demo Code End
 </script>
 
 

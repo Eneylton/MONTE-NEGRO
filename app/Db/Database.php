@@ -9,7 +9,7 @@ class Database
 {
 
     const HOST = 'localhost';
-    const NAME = 'db_definitivo4';
+    const NAME = 'db_definitivo5';
     const USER = 'root';
     const PASS = '';
 
@@ -69,7 +69,7 @@ class Database
         $order = strlen($order) ? 'ORDER BY ' . $order : '';
         $limit = strlen($limit) ? 'LIMIT ' . $limit : '';
 
-        
+
 
         $query = 'SELECT ' . $fields . ' FROM ' . $table . ' ' . $where . ' ' . $order . ' ' . $limit;
 
@@ -107,5 +107,4 @@ class Database
         $this->execute($query);
         return true;
     }
-
 }
